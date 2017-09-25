@@ -1,159 +1,47 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace ygyg
+namespace frdg
 {
-    class MainClass
-    {
-        public static void Main(string[] args)
-        {
-            Console.WriteLine("1a || Примитивные типы:");
-            sbyte sbyteValue = -77;
-            Console.WriteLine("sbyte " + sbyteValue);
-
-            byte byteValue = 56;
-            Console.WriteLine("byte " + byteValue);
-
-            char charValue = 'h';
-            Console.WriteLine("char " + charValue);
-
-            bool boolValue = true;
-            Console.WriteLine("bool " + boolValue);
-
-            short shortValue = 5485;
-            Console.WriteLine("short " + shortValue);
-
-            int intValue = 19495;
-            Console.WriteLine("int " + intValue);
-
-            uint uintValue = 584;
-            Console.WriteLine("uint " + uintValue);
-
-            long longValue = 969305;
-            Console.WriteLine("long " + longValue);
-
-            ulong ulongValue = 958392;
-            Console.WriteLine("ulong " + ulongValue);
-
-            float floatValue = 54.5463f;
-            Console.WriteLine("float " + floatValue);
-
-            double doubleValue = -12.991114578;
-            Console.WriteLine("double " + doubleValue);
-
-            decimal decimalValue = -38.54m;
-            Console.WriteLine("decimal " + decimalValue);
-
-            //неявные преобразования
-            Console.WriteLine("1b || Неявные преобразования:");
-            sbyte sb = -98;
-            short sb1 = sb;
-            Console.WriteLine(sb1);
-
-            ushort ush = 65;
-            uint ush1 = ush;
-            Console.WriteLine(ush1);
-
-            long lg = -187;
-            float lg1 = lg;
-            Console.WriteLine(lg1);
-
-            byte bt = 201;
-            double bt1 = bt;
-            Console.WriteLine(bt1);
+	class Program
+	{
+		// Данный метод возвращает кортеж с 4-мя
+		// разными значениями
+		static Tuple<int, float, string, char> Corteg(int a, string text)
+		{
 
 
-            ulong ul = 973;
-            float ul1 = ul;
-            Console.WriteLine(ul1);
+			int[] numbers = { 4542, 897, 32, 85, 756, 421 };
+			int minValue = numbers.Min();
+			int maxValue = numbers.Max<int>();
+			int sum = 0;
+			foreach (int value in numbers)
+			{
+				sum += value;
+			}
 
-            //явные преобразования
+            string s = "Сумма:" +sum;
+			char ch = (char)(text[0]);            
+			
 
-            Console.WriteLine("1b || Явные преобразования:");
-            ulong ulo = 897867543;
-            byte ulo1;
-            ulo1 = (byte)ulo;
-            Console.WriteLine(ulo1);
-
-            double db = 89.7543;
-            int db1;
-            db1 = (int)db;
-            Console.WriteLine(db1);
-
-            float ft = 89.43f;
-            char ft1;
-            ft1 = (char)ft;
-            Console.WriteLine(ft1);
-
-            float flt = 7878.90f;
-            short flt1;
-            flt1 = (short)flt;
-            Console.WriteLine(flt1);
-
-            char ch = 'u';
-            short ch1;
-            ch1 = (short)ch;
-            Console.WriteLine(ch1);
-
-            //упаковка/распаковка
-            Console.WriteLine("1c || Упаковка/Распаковка:");
-            int i = 564;
-            object o = (object)i; //упаковка
-
-            o = 987;
-            i = (int)o; //распаковка
-
-			//неявно типизированнве переменные 
-			Console.WriteLine("1d || Неявно типизированные переменные:");
-            var ppp = 7;
-            var s = "привет";
-            Console.WriteLine(s);
-            Console.WriteLine(ppp);
-            var b = new[] { 7, 9, 6 };
-
-            //nullable
-            Console.WriteLine("1e || Nullable");
-            int? c = null;
-            bool? j = null;
-            Console.WriteLine(c);
-            Console.WriteLine(j);
-
-			//строковые литералы 
-            Console.WriteLine("2a || Строковые литералы и их сравнение:");
-            string g = "hello";
-            string k = "hello";
-            Console.WriteLine("g=k?"+g == k);
-
-            Console.WriteLine("2b || сцепление,копирование, выделение подстроки и др.");
-            string str1 = "строка1";
-            string str2 = "строка2";
-            string str3 = "строка3";
-
-            string join = string.Join(str1, str2,null);
-            Console.WriteLine(join);
-
-			string copy = string.Copy(str3);
-			Console.WriteLine(copy);
-
-            int ind = 3;
-            int length = 2;
-			string sub = str2.Substring(ind,length);
-			Console.WriteLine(sub);
-
-            const string spl="hello world!";
-            string[] slova = spl.Split(' ');
-            foreach (string word in slova)
-            {
-                Console.WriteLine(word);
-            }
-
-            string sr= "я изучаю";
-            string posle=sr.Insert(8, " C#");
-			Console.WriteLine(posle);
-
-            string ctroka="hello world";
-            string rp = ctroka.Replace("o", "");
-
-
+			return Tuple.Create<int, float, string, char>(minValue, maxValue, s, ch);
 		}
-        }
+
+		static void Main(string[] args)
+		{
+			var myTuple = Corteg(25, "Hello");
+			Console.WriteLine("{0}\nМинимальное значение: {1}\nМаксимальное значение: "
+				+ "{2}\nПервый символ: {3}\n", myTuple.Item3, myTuple.Item1, myTuple.Item2, myTuple.Item4);
+
+			
+		}
+
+	}
+
+	public class Tuple<T1, T2, T3, T4, T5, T6, T7, TRest>
+	{
+	}
 }
+
